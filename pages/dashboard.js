@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
 import Layout from '../components/layout/Layout';
 import { Card } from '../components/login-page/Card';
-import { data, data1, data2, data3 } from '../mock-data/chartdata.js';
+import { data, data1, data2, data3 } from '../mock-data/chartdata';
 
 export default function Dashboard() {
   const router = useRouter();
