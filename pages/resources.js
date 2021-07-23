@@ -1,5 +1,10 @@
-import Layout from "../components/layout/Layout";
+import Layout from '../components/layout/Layout';
+import ResourceCard from '../components/ResourceCard';
 
 export default function Resources() {
-  return <Layout>This is the resources page</Layout>;
+  return (
+    <Layout>
+      <ResourceCard />
+    </Layout>
+  );
 }

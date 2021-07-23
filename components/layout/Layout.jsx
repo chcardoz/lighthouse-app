@@ -20,24 +20,24 @@ import {
 } from '@chakra-ui/react';
 import {
   FiHome,
-  FiTrendingUp,
-  FiCompass,
   FiStar,
   FiSettings,
   FiMenu,
   FiBell,
   FiChevronDown,
+  FiCalendar,
 } from 'react-icons/fi';
+import { HiUserGroup, HiOutlineDocument } from 'react-icons/hi';
 import Link from 'next/link';
 import { useAuth } from '../../lib/auth';
+import '@fontsource/stoke';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome, link: '/dashboard' },
-  { name: 'Students', icon: FiTrendingUp, link: '/students' },
-  { name: 'Insights', icon: FiCompass, link: '/insights' },
+  { name: 'Students', icon: HiUserGroup, link: '/students' },
   { name: 'Integrations', icon: FiStar, link: '/integrations' },
-  { name: 'Scheduling', icon: FiSettings, link: '/scheduling' },
-  { name: 'Reports', icon: FiSettings, link: '/reports' },
+  { name: 'Scheduling', icon: FiCalendar, link: '/scheduling' },
+  { name: 'Reports', icon: HiOutlineDocument, link: '/reports' },
   { name: 'Resources', icon: FiSettings, link: '/resources' },
   { name: 'Settings', icon: FiSettings, link: '/settings' },
 ];
@@ -65,7 +65,7 @@ export default function Layout({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box ml={{ base: 0, md: 60 }} p="4" overflow="hidden">
         {children}
       </Box>
     </Box>
@@ -85,8 +85,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Lighthouse
+        <Text fontSize="2xl" fontFamily="Stoke" fontWeight="bold">
+          LIGHTHOUSE
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -156,10 +156,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
       <Text
         display={{ base: 'flex', md: 'none' }}
         fontSize="2xl"
-        fontFamily="monospace"
+        fontFamily="Stoke"
         fontWeight="bold"
       >
-        Logo
+        LIGHTHOUSE
       </Text>
 
       <HStack spacing={{ base: '0', md: '6' }}>

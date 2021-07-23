@@ -1,5 +1,5 @@
-import { Box, useColorModeValue } from '@chakra-ui/react'
-import * as React from 'react'
+import { Box, useColorModeValue } from '@chakra-ui/react';
+import * as React from 'react';
 
 export const Card = (props) => (
   <Box
@@ -14,5 +14,7 @@ export const Card = (props) => (
       sm: 'lg',
     }}
     {...props}
-  />
-)
+  >
+    {props.children}
+  </Box>
+);
