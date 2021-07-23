@@ -1,10 +1,4 @@
-import Layout from '../components/layout/Layout';
-import { Doughnut } from 'react-chartjs-2';
-import { Line } from 'react-chartjs-2';
-import { Bar } from 'react-chartjs-2';
-import { data, data1, data2, data3 } from '../mock-data/chartdata';
 import {
-  Box,
   Heading,
   SimpleGrid,
   Stat,
@@ -14,8 +8,11 @@ import {
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react';
-import { Card } from '../components/login-page/Card';
 import { useRouter } from 'next/router';
+import { Bar, Doughnut, Line } from 'react-chartjs-2';
+import Layout from '../components/layout/Layout';
+import { Card } from '../components/login-page/Card';
+import { data, data1, data2, data3 } from '../mock-data/chartdata.js';
 
 export default function Dashboard() {
   const router = useRouter();

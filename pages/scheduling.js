@@ -2,7 +2,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import Layout from '../components/layout/Layout';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { meetings } from '../mock-data/meetings';
+import { meetings } from '../mock-data/meetings.js';
 import { Card } from '../components/login-page/Card';
 
 export default function Scheduling() {

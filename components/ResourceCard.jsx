@@ -1,5 +1,5 @@
 import { Box, Image, SimpleGrid } from '@chakra-ui/react';
-import { resources } from '../mock-data/resources';
+import { resources } from '../mock-data/resources.js';
 import { Card } from '../components/login-page/Card';
 
 export default function ResourceCard() {
