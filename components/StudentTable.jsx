@@ -10,7 +10,7 @@ import {
   Badge,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { students } from '../mock-data/students';
+import { students } from '../public/mock-data/students';
 import { useSearch } from '../utils/search';
 
 const badgeColors = {

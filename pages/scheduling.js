@@ -2,7 +2,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import Layout from '../components/layout/Layout';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { meetings } from '../mock-data/meetings';
+import { meetings } from '../public/mock-data/meetings';
 import { Card } from '../components/login-page/Card';
 import { Heading } from '@chakra-ui/react';
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from 'react';
-import { meetings } from '../mock-data/meetings';
-import { students } from '../mock-data/students';
+import { meetings } from '../public/mock-data/meetings';
+import { students } from '../public/mock-data/students';
 import CalculateStatus from './calculateStatus';
 
 const SearchContext = createContext();

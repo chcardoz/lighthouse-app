@@ -8,8 +8,8 @@ import {
   Tabs,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { meetings } from '../mock-data/meetings';
-import { notes } from '../mock-data/notes';
+import { meetings } from '../public/mock-data/meetings';
+import { notes } from '../public/mock-data/notes';
 import MeetingCard from './MeetingCard';
 import NoteCard from './NoteCard';
 
