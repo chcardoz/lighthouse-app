@@ -28,6 +28,7 @@ import {
   FiCalendar,
 } from 'react-icons/fi';
 import { HiUserGroup, HiOutlineDocument } from 'react-icons/hi';
+import { GiStack } from 'react-icons/gi';
 import Link from 'next/link';
 import { useAuth } from '../../lib/auth';
 import '@fontsource/stoke';
@@ -37,15 +38,14 @@ const LinkItems = [
   { name: 'Students', icon: HiUserGroup, link: '/students' },
   { name: 'Integrations', icon: FiStar, link: '/integrations' },
   { name: 'Scheduling', icon: FiCalendar, link: '/scheduling' },
-  { name: 'Reports', icon: HiOutlineDocument, link: '/reports' },
-  { name: 'Resources', icon: FiSettings, link: '/resources' },
+  { name: 'Resources', icon: GiStack, link: '/resources' },
   { name: 'Settings', icon: FiSettings, link: '/settings' },
 ];
 
 export default function Layout({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH="100vh" bg={useColorModeValue('whitesmoke', 'gray.900')}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -179,9 +179,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
               <HStack>
                 <Avatar
                   size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
+                  name={auth?.user?.email}
+                  src={auth?.user?.photoUrl}
                 />
                 <VStack
                   display={{ base: 'none', md: 'flex' }}
@@ -191,7 +190,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 >
                   <Text fontSize="sm">{auth?.user?.email}</Text>
                   <Text fontSize="xs" color="gray.600">
-                    Admin
+                    Guidance Counselor
                   </Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>
@@ -203,10 +202,12 @@ const MobileNav = ({ onOpen, ...rest }) => {
               bg={useColorModeValue('white', 'gray.900')}
               borderColor={useColorModeValue('gray.200', 'gray.700')}
             >
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>
-                <Link href="/settings">Settings</Link>
-              </MenuItem>
+              <Link href="/profile">
+                <MenuItem>Profile</MenuItem>
+              </Link>
+              <Link href="/settings">
+                <MenuItem>Settings</MenuItem>
+              </Link>
               <MenuDivider />
               <MenuItem
                 onClick={async () => {

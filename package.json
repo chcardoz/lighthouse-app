@@ -11,6 +11,7 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@fontsource/anonymous-pro": "^4.5.0",
     "@fontsource/inter": "^4.5.0",
     "@fontsource/stoke": "^4.5.0",
     "@next/bundle-analyzer": "^11.0.1",

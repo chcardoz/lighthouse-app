@@ -1,5 +1,13 @@
-import Layout from "../components/layout/Layout";
+import { Heading } from '@chakra-ui/react';
+import Layout from '../components/layout/Layout';
+import { Card } from '../components/login-page/Card';
 
 export default function Integrations() {
-  return <Layout>This is the integrations page</Layout>;
+  return (
+    <Layout>
+      <Card>
+        <Heading>Integrations Marketplace</Heading>
+      </Card>
+    </Layout>
+  );
 }

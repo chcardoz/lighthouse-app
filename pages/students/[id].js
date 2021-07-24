@@ -2,29 +2,39 @@ import {
   Avatar,
   Badge,
   Heading,
+  Icon,
   IconButton,
   Stack,
   Text,
+  Tooltip,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import Indicators from '../../components/Indicators';
 import Layout from '../../components/layout/Layout';
 import StudentTabs from '../../components/StudentTabs';
-import { students } from '../../mock-data/students';
+import {
+  MdEmail,
+  MdEvent,
+  MdNoteAdd,
+  MdSms,
+  MdVideoCall,
+} from 'react-icons/md';
+import { useSearch } from '../../utils/search';
+
+const badgeColors = {
+  ON_TRACK: 'green',
+  WARNING: 'orange',
+  DANGER: 'red',
+};
 
 export default function StudentPage() {
   const router = useRouter();
+  const search = useSearch();
 
   const { id } = router.query;
-  const studentObject = students.find((s) => s.student_id === parseInt(id));
-  let sum = 0;
-  let average = null;
-  for (const grade in studentObject?.grades) {
-    sum += studentObject?.grades[grade];
-  }
-  if (studentObject?.grades) {
-    average = sum / Object.keys(studentObject.grades).length;
-  }
+  const studentObject = search.allStudents.find(
+    (s) => s.student_id === parseInt(id)
+  );
 
   return (
     <Layout>
@@ -42,22 +52,75 @@ export default function StudentPage() {
           <Avatar size="2xl" src={studentObject?.photo} />
           <Heading>{studentObject?.name}</Heading>
           <Text>
-            <b>Student ID:</b>
+            <b>Student ID: </b>
             {id}
           </Text>
 
           <Text>{studentObject?.year}</Text>
-          <Badge variant="solid" maxW="80px" colorScheme="green">
-            On Track
+          <Badge
+            variant="solid"
+            maxW="80px"
+            colorScheme={badgeColors[studentObject?.status]}
+          >
+            {studentObject?.status}
           </Badge>
-          <Stack isInline justifyContent="space-between">
-            <IconButton aria-label="icon" icon="copy" />
-            <IconButton aria-label="icon" icon="copy" />
-            <IconButton aria-label="icon" icon="copy" />
-            <IconButton aria-label="icon" icon="copy" />
+          <Stack pt={5} isInline spacing={4}>
+            <Tooltip label="Start a video call">
+              <IconButton
+                aria-label="zoom"
+                variant="solid"
+                colorScheme="green"
+                fontSize={35}
+                size="lg"
+                icon={<MdVideoCall />}
+              />
+            </Tooltip>
+
+            <Tooltip label="Schedule a meeting">
+              <IconButton
+                aria-label="meetings"
+                variant="solid"
+                colorScheme="green"
+                fontSize={35}
+                size="lg"
+                icon={<MdEvent />}
+              />
+            </Tooltip>
+
+            <Tooltip label="Send a text">
+              <IconButton
+                aria-label="text"
+                variant="solid"
+                colorScheme="green"
+                fontSize={35}
+                size="lg"
+                icon={<MdSms />}
+              />
+            </Tooltip>
+
+            <Tooltip label="Send an email">
+              <IconButton
+                aria-label="text"
+                variant="solid"
+                colorScheme="green"
+                fontSize={35}
+                size="lg"
+                icon={<MdEmail />}
+              />
+            </Tooltip>
+            <Tooltip label="Add a note">
+              <IconButton
+                aria-label="note"
+                variant="solid"
+                colorScheme="green"
+                fontSize={35}
+                size="lg"
+                icon={<MdNoteAdd />}
+              />
+            </Tooltip>
           </Stack>
         </Stack>
-        <Indicators studentObject={studentObject} average={average} />
+        <Indicators studentObject={studentObject} />
       </Stack>
       <StudentTabs studentObject={studentObject} />
     </Layout>

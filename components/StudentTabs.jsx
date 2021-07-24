@@ -7,8 +7,19 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { meetings } from '../mock-data/meetings';
+import { notes } from '../mock-data/notes';
+import MeetingCard from './MeetingCard';
+import NoteCard from './NoteCard';
 
 export default function StudentTabs({ studentObject }) {
+  const router = useRouter();
+
+  const { id } = router.query;
+  const studentNotes = notes.filter((n) => n.student_id === parseInt(id));
+  const studentMeetings = meetings.filter((m) => m.studentID === parseInt(id));
+
   return (
     <Tabs
       borderRadius="lg"
@@ -48,7 +59,9 @@ export default function StudentTabs({ studentObject }) {
           </List>
         </TabPanel>
         <TabPanel>
-          <p>two!</p>
+          {studentNotes.map((note) => {
+            return <NoteCard note={note} />;
+          })}
         </TabPanel>
         <TabPanel>
           <p>three!</p>
@@ -57,7 +70,9 @@ export default function StudentTabs({ studentObject }) {
           <p>three!</p>
         </TabPanel>
         <TabPanel>
-          <p>three!</p>
+          {studentMeetings.map((meeting) => {
+            return <MeetingCard meeting={meeting} />;
+          })}
         </TabPanel>
       </TabPanels>
     </Tabs>

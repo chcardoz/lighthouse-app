@@ -14,12 +14,13 @@ import { Card } from './Card';
 import { DividerWithText } from './DividerWithText';
 import { Link } from './Link';
 import { LoginForm } from './LoginForm';
+import '@fontsource/stoke';
 
 export const Login = () => {
   const auth = useAuth();
   return (
     <Box
-      bg={useColorModeValue('gray.200', 'inherit')}
+      bg={useColorModeValue('green.700', 'inherit')}
       minH="100vh"
       py="12"
       px={{
@@ -28,34 +29,36 @@ export const Login = () => {
       }}
     >
       <Box rounded="lg" maxW="md" mx="auto">
-        <Heading textAlign="center" size="xl" fontWeight="extrabold">
-          Sign in to your account
+        <Heading color="white" textAlign="center" size="2xl" fontFamily="Stoke">
+          LIGHTHOUSE
         </Heading>
-        <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
-          <Text as="span">Don&apos;t have an account?</Text>
-          <Link href="#">Start free trial</Link>
+        <Text
+          color="whitesmoke"
+          mt="4"
+          mb="8"
+          align="center"
+          maxW="md"
+          fontWeight="medium"
+        >
+          <Text as="span">Sign in to your account or sign up</Text>
         </Text>
         <Card>
           <LoginForm />
           <DividerWithText mt="6">or continue with</DividerWithText>
-          <SimpleGrid mt="6" columns={3} spacing="3">
-            <Button color="currentColor" variant="outline">
-              <VisuallyHidden>Login with Facebook</VisuallyHidden>
-              <FaFacebook />
-            </Button>
+          <SimpleGrid mt="6" columns={2} spacing="3">
             <Button
-              color="currentColor"
-              variant="outline"
+              variant="solid"
+              colorScheme="blue"
               onClick={async () => {
                 await auth.signinWithGoogle('/dashboard');
               }}
             >
               <VisuallyHidden>Login with Google</VisuallyHidden>
-              <FaGoogle />
+              <FaGoogle color="white" />
             </Button>
-            <Button color="currentColor" variant="outline">
+            <Button colorScheme="blackAlpha" variant="solid">
               <VisuallyHidden>Login with Github</VisuallyHidden>
-              <FaGithub />
+              <FaGithub color="white" />
             </Button>
           </SimpleGrid>
         </Card>
