@@ -13,22 +13,28 @@ export default function CalculateStatus(students) {
     let gpaScore = 0;
     let status = 'DANGER';
     let attendanceStatus = 'DANGER';
-    let behaviorStatus = 'DANGER';
+    let behaviorStatus = 'ON_TRACK';
     let epStatus = 'DANGER';
     let gpaStatus = 'DANGER';
 
-    if (s.attendance > 50 && s.attendance < 80) {
+    if (s.attendance > 80 && s.attendance < 95) {
       attendanceScore = 1;
       attendanceStatus = 'WARNING';
     }
-    if (s.attendance > 80) {
+    if (s.attendance > 95) {
       attendanceScore = 2;
       attendanceStatus = 'ON_TRACK';
     }
-    if (s.behavior <= 2 && s.suspensions <= 2) {
+    if (s.behavior >= 2 || s.suspensions >= 2) {
       behaviorScore = 1;
-      behaviorStatus = 'ON_TRACK';
+      behaviorStatus = 'DANGER';
     }
+
+    if (s.suspensions > 0) {
+      behaviorScore = 0;
+      behaviorStatus = 'WARNING';
+    }
+
     if (s.ep) {
       epScore = 1;
       epStatus = 'ON_TRACK';

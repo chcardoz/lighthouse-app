@@ -5,6 +5,7 @@ import {
   SimpleGrid,
   Text,
   useColorModeValue,
+  useToast,
   VisuallyHidden,
 } from '@chakra-ui/react';
 import * as React from 'react';
@@ -18,6 +19,7 @@ import '@fontsource/stoke';
 
 export const Login = () => {
   const auth = useAuth();
+  const toast = useToast();
   return (
     <Box
       bg={useColorModeValue('green.700', 'inherit')}
@@ -50,13 +52,37 @@ export const Login = () => {
               variant="solid"
               colorScheme="blue"
               onClick={async () => {
-                await auth.signinWithGoogle('/dashboard');
+                await auth.signinWithGoogle('/dashboard').catch((e) => {
+                  const message = e.message;
+                  toast({
+                    title: 'An error occured',
+                    description: message,
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                });
               }}
             >
               <VisuallyHidden>Login with Google</VisuallyHidden>
               <FaGoogle color="white" />
             </Button>
-            <Button colorScheme="blackAlpha" variant="solid">
+            <Button
+              colorScheme="blackAlpha"
+              variant="solid"
+              onClick={async () => {
+                await auth.signinWithGitHub('/dashboard').catch((e) => {
+                  const message = e.message;
+                  toast({
+                    title: 'An error occured',
+                    description: message,
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                });
+              }}
+            >
               <VisuallyHidden>Login with Github</VisuallyHidden>
               <FaGithub color="white" />
             </Button>
